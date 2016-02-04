@@ -91,17 +91,17 @@ template info*(args: varargs[string, `$`]) =
     const module = instantiationInfo().filename[0 .. ^5]
     send(module, args)
 
-template warn*(args) =
+template warn*(args: varargs[string, `$`]) =
   if logLevel <= Level.warn:
     const module = instantiationInfo().filename[0 .. ^5]
     send module, args
 
-template error*(args) =
+template error*(args: varargs[string, `$`]) =
   if logLevel <= Level.error:
     const module = instantiationInfo().filename[0 .. ^5]
     send module, args
 
-template fatal*(args) =
+template fatal*(args: varargs[string, `$`]) =
   if logLevel <= Level.fatal:
     const module = instantiationInfo().filename[0 .. ^5]
     send module, args
